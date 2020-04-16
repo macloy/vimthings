@@ -1,6 +1,6 @@
 .netrwhist
-./spell/*.add
-./spell/*.spl
-./pack/**
+spell/*.add
+spell/*.spl
+pack/
 
 
