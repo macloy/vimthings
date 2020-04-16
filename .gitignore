@@ -1,3 +1,6 @@
 .netrwhist
 ./spell/*.add
 ./spell/*.spl
+./pack/**
+
+
