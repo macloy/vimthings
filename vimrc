@@ -1,9 +1,24 @@
 "htttps://gist.github.com/0xadada/1ea7f96d108dcfbe75c9#motion---normal-mode
 " https://github.com/amix/vimrc/blob/master/vimrcs/basic.vim
 " https://github.com/JAremko/alpine-vim/tree/master/alpine-vim-base
-
+"https://thevaluable.dev/vim-php-ide/
+"curl -fLo ~/.vim/autoload/plug.vim  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 "Type :set termcap to see which vim keycodes are unused.
 ":only close all split windows
+
+"Plugin aktive fenster, nerttree erstehen, php testen, ascci-doc
+""Plugin aktive fenster, nerttree erstehen, php testen, ascci-doc
+"Plugin aktive fenster, nerttree erstehen, php testen, ascci-doc???
+
+
+call plug#begin('~/.vim/plugged')
+
+" PHP
+" Plug 'joonty/vdebug'
+Plug 'StanAngeloff/php.vim'
+Plug 'stephpy/vim-php-cs-fixer'
+call plug#end()
+
 
 set encoding=utf8
 
@@ -35,7 +50,9 @@ map <leader>t<leader> :tabnext
 "" xSpelling
 " The spell .wdd file are automatically saved under ~/.vim/spell 
 " Word completion will use the words from the own file with ctrl-n
-:setlocal spell spelllang=en_us,de
+":setlocal spell spelllang=en_us,de
+set nospell
+set spelllang=en_us,de
 map <leader>ss :setlocal spell!<cr>
 map <leader>sn ]s
 map <leader>sp [s
