@@ -1,4 +1,4 @@
-"htttps://gist.github.com/0xadada/1ea7f96d108dcfbe75c9#motion---normal-mode
+"https://gist.github.com/0xadada/1ea7f96d108dcfbe75c9#motion---normal-mode
 " https://github.com/amix/vimrc/blob/master/vimrcs/basic.vim
 " https://github.com/JAremko/alpine-vim/tree/master/alpine-vim-base
 "https://thevaluable.dev/vim-php-ide/
@@ -7,16 +7,20 @@
 ":only close all split windows
 
 "Plugin aktive fenster, nerttree erstehen, php testen, ascci-doc
-""Plugin aktive fenster, nerttree erstehen, php testen, ascci-doc
-"Plugin aktive fenster, nerttree erstehen, php testen, ascci-doc???
 
 
 call plug#begin('~/.vim/plugged')
 
 " PHP
-" Plug 'joonty/vdebug'
-Plug 'StanAngeloff/php.vim'
-Plug 'stephpy/vim-php-cs-fixer'
+Plug 'StanAngeloff/php.vim', {'for': 'php'}
+Plug 'rayburgemeestre/phpfolding.vim', {'for': 'php'}
+"Plug 'stephpy/vim-php-cs-fixer', {'for': 'php'}
+
+Plug 'scrooloose/nerdtree'
+
+" Plug to dim colors of not-focused windows
+Plug 'blueyed/vim-diminactive'
+
 call plug#end()
 
 
@@ -26,7 +30,10 @@ set rnu
 
 let mapleader = ","
 
-"  set noswapfile
+set noswapfile
+set foldmethod=indent
+
+
 
 " Fast saving
 nmap <leader>w :w!<cr>
@@ -36,6 +43,8 @@ set background=dark
 set tabstop=4
 set laststatus=2
 set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
+hi statusline ctermbg=3 ctermfg=0
+
 
 
 map <C-J> <C-W>j<C-W>_
@@ -46,9 +55,10 @@ map <leader>tn :tabnew<cr>
 map <leader>tc :tabclose<cr>
 map <leader>t<leader> :tabnext 
 	
+"syntax on
 
-"" xSpelling
-" The spell .wdd file are automatically saved under ~/.vim/spell 
+
+"The spell .add file are automatically saved under ~/.vim/spell 
 " Word completion will use the words from the own file with ctrl-n
 ":setlocal spell spelllang=en_us,de
 set nospell
