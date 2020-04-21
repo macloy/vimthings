@@ -6,9 +6,9 @@
 "Type :set termcap to see which vim keycodes are unused.
 ":only close all split windows
 
-"Plugin aktive fenster, nerttree erstehen, php testen, ascci-doc
 
-
+" The folder .vim/plugged ist NOT under version control.
+" The folder will be created automatically, when a plugin is downloaded.
 call plug#begin('~/.vim/plugged')
 
 " PHP
@@ -44,7 +44,7 @@ set tabstop=4
 set laststatus=2
 set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
 hi statusline ctermbg=3 ctermfg=0
-
+hi ColorColumn ctermbg=4
 
 
 map <C-J> <C-W>j<C-W>_
@@ -62,7 +62,9 @@ map <leader>t<leader> :tabnext
 " Word completion will use the words from the own file with ctrl-n
 ":setlocal spell spelllang=en_us,de
 set nospell
-set spelllang=en_us,de
+"set spelllang=en_us
+"set spelllang=en_us,de
+set spelllang=de
 map <leader>ss :setlocal spell!<cr>
 map <leader>sn ]s
 map <leader>sp [s
