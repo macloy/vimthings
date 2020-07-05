@@ -32,6 +32,29 @@
 
 " Folding shortcuts
 " za, zo, zc
+" zo: open a fold at cursor
+" zO: open all folds down at cursor
+" zc: close a fold at cursor
+" zC: close all levels of folds at cursor
+" za: / zA: toggle fold
+" zm: close fold by one level across the file
+" zM: close all folds across the file
+" zr: open fold by one level across the file
+" zR: open all folds across the file
+" zj / zk: move to next / previous fold
+" [z / ]z: go to begining / end of the fold
+"
+" set foldmethod: show foldmethod
+" set fdm: show foldmethod
+" set fdm=manual: set foldmethod manual
+" zf: create fold
+" zd: delete fold
+" 158,167 fold: fold this range
+" c-v5jzf: visual mod 5 line down and create fold
+" c-va{zf: create fold between existing {}
+
+
+
 
 " Window resize codes
 " <C-W>+, <C-W>-, <C-W>|, <C-W>_, <C-W>=
@@ -222,8 +245,41 @@ let NERDTreeShowHidden=1
 nnoremap <C-a> ea_<Esc>r
 
 
+" Formatierung für pdf: https://github.com/asciidoctor/asciidoctor-pdf/blob/master/docs/theming-guide.adoc
+" autocmd BufWritePost *.adoc !docker run --rm -v /home/joachim/git/fhg_ahead/work/doku/asciidoc:/documents/ asciidoctor/docker-asciidoctor asciidoctor -r asciidoctor-diagram -b html5 index.adoc
+"autocmd BufWritePost *.adoc !docker run --rm -v /home/joachim/git/personagrata/work/doku/asciidoc:/documents/ asciidoctor/docker-asciidoctor asciidoctor-pdf -r asciidoctor-diagram  index.adoc
+autocmd BufWritePost *.adoc !docker run --rm -v /home/joachim/git/personagrata/work/doku/asciidoc:/documents/ asciidoctor/docker-asciidoctor asciidoctor -r asciidoctor-diagram  index.adoc
 
-autocmd BufWritePost *.adoc !docker run --rm -v /home/joachim/git/fhg_ahead/work/doku/asciidoc:/documents/ asciidoctor/docker-asciidoctor asciidoctor -r asciidoctor-diagram -b html5 index.adoc
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Ascii-Folding 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! AsciidocLevel()
+    if getline(v:lnum) =~ '^== .*$'
+        return ">1"
+    endif
+    if getline(v:lnum) =~ '^=== .*$'
+        return ">2"
+    endif
+    if getline(v:lnum) =~ '^==== .*$'
+        return ">3"
+    endif
+    if getline(v:lnum) =~ '^===== .*$'
+        return ">4"
+    endif
+    if getline(v:lnum) =~ '^====== .*$'
+        return ">5"
+    endif
+    if getline(v:lnum) =~ '^======= .*$'
+        return ">6"
+    endif
+    return "="
+endfunction
+" run the folding level method when asciidoc is here
+autocmd Syntax asciidoc setlocal foldexpr=AsciidocLevel()
+" enable folding method: expression on asciidoc
+autocmd Syntax asciidoc setlocal foldmethod=expr
+" start with text unfolded all the way
+autocmd BufRead *.adoc normal zM
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
