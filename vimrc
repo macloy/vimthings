@@ -248,7 +248,9 @@ nnoremap <C-a> ea_<Esc>r
 " Formatierung für pdf: https://github.com/asciidoctor/asciidoctor-pdf/blob/master/docs/theming-guide.adoc
 " autocmd BufWritePost *.adoc !docker run --rm -v /home/joachim/git/fhg_ahead/work/doku/asciidoc:/documents/ asciidoctor/docker-asciidoctor asciidoctor -r asciidoctor-diagram -b html5 index.adoc
 "autocmd BufWritePost *.adoc !docker run --rm -v /home/joachim/git/personagrata/work/doku/asciidoc:/documents/ asciidoctor/docker-asciidoctor asciidoctor-pdf -r asciidoctor-diagram  index.adoc
-autocmd BufWritePost *.adoc !docker run --rm -v /home/joachim/git/personagrata/work/doku/asciidoc:/documents/ asciidoctor/docker-asciidoctor asciidoctor -r asciidoctor-diagram  index.adoc
+"autocmd BufWritePost *.adoc !docker run --rm -v /home/joachim/git/personagrata/work/doku/asciidoc:/documents/ asciidoctor/docker-asciidoctor asciidoctor -r asciidoctor-diagram  index.adoc
+map <leader>wd :w<CR>:!docker run --rm -v /home/joachim/git/personagrata/work/doku/asciidoc:/documents/ asciidoctor/docker-asciidoctor asciidoctor -r asciidoctor-diagram  index.adoc<CR>
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Ascii-Folding 
